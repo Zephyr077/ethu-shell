@@ -1,0 +1,6 @@
+[target]
+programs=principal pash utilidades comandos
+units=utilidades pash comandos
+
+[compiler]
+version=2.4.0
