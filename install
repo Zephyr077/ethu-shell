@@ -1,0 +1,16 @@
+Descargar todos los archivos en sus carpetas correspondientes.
+Con una terminal, ir a la carpeta Codigo del proyecto.
+
+{Con permisos de SuperUsuario}
+Teclear en la terminal
+
+$ fpcmake
+
+$ make install
+
+Luego, ir a la carpeta man(siempre con la terminal)
+Y luego copiar y pegar lo siguiente:
+
+'sudo cp pash.1 /usr/share/man/es/man1/'
+
+Man en el programa: 'man pash'
