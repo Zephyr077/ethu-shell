@@ -28,11 +28,12 @@ procedure fg(P_id:string);	// Recibe el codigo de un PID conocido, evalua si el 
 	 var 
 		pid:string;				
 		cod_error: word;
-	    senialAMandar: cint;
-	    R: longint;
+	    	senialAMandar: cint;
+		 R: longint;
 		caracter:char;
 	 begin
 		caracter := 'a';
+		pid:=P_id;
 	   val(P_id,R,cod_error);
            senialAMandar:=SIGCONT; //Enviamos la señal para traer el proceso a primer plano
    	   if (cod_error = 0) then 
