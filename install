@@ -14,3 +14,5 @@ Y luego copiar y pegar lo siguiente:
 'sudo cp pash.1 /usr/share/man/es/man1/'
 
 Man en el programa: 'man pash'
+
+Archivos prueba1.pp y prueba2.pp son ejemplos básicos creados con el fin de probar el funcionamiento de primer y segundo plano.
