@@ -55,7 +55,7 @@ procedure modificarPrograma(var tVectorProgramas:tVectorPID;pid:string;estado:st
 implementation
 uses pash;
 
-procedure modificarPrograma(var tVectorProgramas:tVectorPID;pid:string;estado:string);
+procedure modificarPrograma(var tVectorProgramas:tVectorPID;pid:string;estado:string); //modifica a un estado nuevo
 var i:byte;
 begin
 
@@ -71,7 +71,7 @@ begin
 			end;
 end;
 
-procedure mostrarVectorProgramas(tVectorProgramas:tVectorPID);
+procedure mostrarVectorProgramas(tVectorProgramas:tVectorPID); //el jobs del programa
 var i:byte;
 
 begin
@@ -85,7 +85,7 @@ begin
 				end;
 end;
 
-function proximaPosicionLibre(vector: tVectorPID):byte;
+function proximaPosicionLibre(vector: tVectorPID):byte; //tira la proxima posicion libre
 var i:byte;
 begin
 	i:=0;
@@ -95,7 +95,7 @@ begin
 proximaPosicionLibre:=i;
 end;
 
-procedure crearVectorProgramas(var tVectorProgramas:tVectorPID);
+procedure crearVectorProgramas(var tVectorProgramas:tVectorPID); //Inicialza vector de programas
 var i:byte;
 
 begin
@@ -110,18 +110,11 @@ Writeln('Vector de programas inicializado.');
 end;
 
 procedure agregarPrograma(var tVectorProgramas:tVectorPID; programa: string;pid: string;estado: string);
-var i:byte;
+var i:byte;  //Agrega un programa al vector de programas
 begin
 i:=0;
 
 i:=proximaPosicionLibre(tVectorProgramas);
-writeln('Posicion libre: ',i);
-writeln('Posicion libre: ',i);
-writeln('Posicion libre: ',i);
-
-writeln('Posicion libre: ',i);
-writeln('Posicion libre: ',i);
-writeln('Posicion libre: ',i);
 		if (i = 11) then
 			writeln('Vector lleno')
 		else
