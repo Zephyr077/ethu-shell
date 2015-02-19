@@ -1,0 +1,116 @@
+PASH
+
+     PASH 
+
+NOMBRE
+     Ethu-Shell
+
+
+COPYRIGHT
+     Copyright (c) 2014 , Free Software Foundation .
+     The GNU Lesser General Public License, version 3.0 (LGPL-3.0) <http://opensource.org/licenses/LGPL-3.0>
+
+
+DESCRIPCION
+        Ethu-shell es una interfaz que interpreta comandos desde la entrada estándar, los ejecuta, o advierte en caso de una situación de error. Al ejecutarse en la pantalla aparece el PROMPT que contiene el nombre del equipo.        
+
+
+GRAMATICA DEL SHELL
+ 
+   En el Shell se utilizan una secuencia de parámetros separados por un espacios o en caso de una opción va pegada al comando. El primer parámetro especifica el comando, el segundo puede ser una opción, dependiendo del comando, o un archivo, o un caracter especial y los siguientes en general son archivos. 
+   En el Shell también se pueden ejecutar programas por medio de su ruta relativa o absoluta.
+
+
+COMANDOS
+   
+   CAT: Concatena uno o dos archivos al embocarlo desde PASH. Este comando utiliza archivos como parámetros.
+
+   CD: Este comando sirve para desplazarse dentro de los directorios del sistema, ya sea desde una ruta especifica, que se debe especificar como parámetro o mediante los caracteres '..' que retroceder al directorio antecesor de la posición actual.
+
+   KILL: Comando que se utiliza para enviar señales, utilizando como parámetros una SEÑAL y el PID (Identificador de Proceso) del proceso al que se quiere mandar la señal.
+  
+   LS: Cuando se le pasa este comando al Shell, se obtiene una lista con los nombres y algunas características de cada elementos que están en una carpeta. La lista dependerá de la carpeta que entre como parámetro al ls, o bien, en donde esta ubicada Pash en ese instante si la ejecución es sin ruta. También va a influir la opción que se le especifique, entre las que se pueden encontrar -l, -a, -s. 
+
+   PWD: Devuelve como resultado la ruta del directorio actual donde se encuentra trabajando el usuario con Pash.
+
+   p: Si no tiene ningun argumento, pausa el ultimo proceso que se mando a ejecutar. Si el argumento es un PID de un proceso, lo pausa.
+
+   bg: Si no tiene ningun argumento, reanuda el ultimo proceso que se mando a ejecutar y deja escribir otros comandos en consola mientras tanto. Si el argumento es un PID de un proceso, reanuda el proceso indicado y deja escribir otros comandos en consola mientras el proceso siga su ejecucion.
+
+  fg: Si no tiene ningun argumento, reanuda el ultimo proceso que se mando a ejecutar y NO deja escribir otros comandos en consola hasta que se oprima la tecla 'z'. Si el argumento es un PID de un proceso, reanuda el proceso indicado y NO deja escribir otros comandos en consola hasta que se oprima la tecla 'z'.
+
+  jobs: Se obtiene la lista de procesos ejecutandose y su estado actual, tanto como su PID correspondiente.
+
+
+SEÑALES
+
+ Estas son las señales que se pueden usar con Pash:
+
+       Señal       Valor    Acción   Comentario
+
+       SIGHUP        1       Term    Cuelgue detectado en la terminal de control o muerte del proceso de control
+       SIGINT        2       Term    Interrupción procedente del teclado
+       SIGQUIT       3       Core    Terminación procedente del teclado
+       SIGILL        4       Core    Instrucción ilegal
+       SIGABRT       6       Core    Señal de aborto
+       SIGFPE        8       Core    Excepción de coma flotante
+       SIGKILL       9       Term    Señal de matar
+       SIGSEGV      11       Core    Referencia inválida a memoria
+       SIGPIPE      13       Term    Tubería rota: escritura sin lectores
+       SIGALRM      14       Term    Señal de alarma
+       SIGTERM      15       Term    Señal de terminación
+       SIGUSR1      10       Term    Señal definida por usuario 1
+       SIGUSR2      12       Term    Señal definida por usuario 2
+       SIGCHLD      17       Ign     Proceso hijo terminado o parado
+       SIGCONT      18               Continuar si estaba parado
+       SIGSTOP      19       Stop    Parar proceso
+
+ A continuación otras señales.
+
+       Señal       Valor    Acción   Comentario
+       
+       SIGIOT        6       Core    Trampa IOT.
+       SIGEMT        -       Term
+       SIGSTKFLT    16       Term    Fallo de la pila en el coprocesador (no usada)
+       SIGIO        29       Term    E/S permitida ya (4.2 BSD)
+       SIGCLD        -       Ign     Un sinónimo de SIGCHLD
+       SIGPWR       30       Term    Fallo de corriente eléctrica (System V)
+       SIGINFO       -               Un sinónimo para SIGPWR
+       SIGLOST       -       Term    Bloqueo de fichero perdido.
+       SIGWINCH     28       Ign     Señal de reescalado de la ventana (4.3 BSD, Sun)
+       SIGUNUSED    31       Term    Señal no usada.  
+
+
+PARAMETROS ESPECIALES 
+
+         /: sirve para especificar direcciones.
+  
+        ..: parámetro de retroceso para CD.
+ 
+         >: redirección de la salida estándar.
+  
+         <: redirección de la entrada estándar.
+ 
+         |: comando pipe, especifica que el resultado del proceso de un parámetro sera utilizado por el proceso de otro parámetro.
+ 
+ "espacio": sirve para separar parámetros que entran en el Shell.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
