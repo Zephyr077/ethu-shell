@@ -1,5 +1,5 @@
 [target]
-programs=principal pash utilidades comandos
+programs=principal pash utilidades comandos prueba prueba2
 units=utilidades pash comandos
 
 [compiler]
