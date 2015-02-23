@@ -15,6 +15,8 @@ procedure pipe(comando1:string;opcion1:string;comando2:string;opcion2:string);
 procedure pause(P_id: string);
 procedure fg(P_id: string);
 procedure bg(P_id:string);
+procedure standby(pid:string;ruta:string;vezEjecutado:integer);
+procedure matar(P_id: string); //Recibe el PID del proceso, y lo mata
 
 
 
@@ -22,6 +24,59 @@ implementation
 uses pash;
 
 
+
+procedure standby(pid:string;ruta:string;vezEjecutado:integer);
+var
+i:integer;
+op,op2:string;
+begin
+i:=1;
+op:='';
+op2:='';
+repeat
+    repeat
+      inc(i);
+    until keypressed;
+    op:=readkey;
+    if op=#26 then
+       op2:='Z';
+	if op=#25 then
+		op2:='C';
+
+until (op2='Z') or (op2='C');
+if (op2='Z') then //si fue CTRL+Z
+	   begin
+				pause(pid);
+				
+				if vezEjecutado=1 then //si es la primera vez que se ejecuta
+					begin
+						agregarPrograma(tVectorProgramas,ruta,pid,'Detenido');					
+					end
+					else
+					begin
+						modificarPrograma(tVectorProgramas,pid,'Detenido');	
+					end;
+	   end
+	  else
+	     begin			
+	        	if (op2='C') then //si fue CTRL+C
+					begin
+						matar(pid);
+						  
+							if vezEjecutado=1 then //si es la primera vez que se ejecuta
+								begin
+									agregarPrograma(tVectorProgramas,ruta,pid,'MATADO');
+								end
+								else
+								begin
+									modificarPrograma(tVectorProgramas,pid,'MATADO');
+								end;
+					end;
+		end;
+
+op:='';
+op2:='';
+end;
 
 
 procedure fg(P_id:string);	// Recibe el codigo de un PID conocido, evalua si el mismo es correcto, si es asi, manda la señal de resumen, caso contrario tira error.
@@ -39,17 +94,9 @@ procedure fg(P_id:string);	// Recibe el codigo de un PID conocido, evalua si el 
    	   if (cod_error = 0) then 
           begin
            fpkill(R,senialAMandar);
-           writeln('El proceso se ha vuelto a primero plano, con el PID: ', R);
-			
-			
-			caracter := readkey;
-			while (caracter<> 'z') do
-			begin
-					caracter:=readkey;
-			end;
-		
-		pause(pid);
-		ultimoEjecutadoPID:=pid;
+           writeln('El proceso se ha vuelto a primero plano, con el PID: ', R);			
+			standby(pid,'',2);
+			ultimoEjecutadoPID:=pid;
 
       end
 	   else
@@ -95,12 +142,33 @@ procedure pause(P_id: string); //Recibe el PID del proceso, y lo pausa
 					begin	
 						  modificarPrograma(tVectorProgramas,pid,'Detenido');
      	     			  Fpkill(R,senialAMandar);
-     	     			  writeln('El ha sido pausado con exito, el mismo es el:',P_id);
+     	     			  writeln('El ha sido PAUSADO con exito, el mismo es el:',P_id);
 					end
 					else
 						writeln('Ha habido un error, codigo: ', cod_error);
 
-	end;				
+	end;			
+
+procedure matar(P_id: string); //Recibe el PID del proceso, y lo mata
+	 var
+	 R: longint;
+	 senialAMandar: cint;
+	 cod_error: word;
+	 pid: string;
+	 begin 
+			pid:=P_id;
+			senialAMandar:=SIGTERM;
+			val(P_id,R,cod_error);   	   
+     		if (cod_error = 0) then
+					begin	
+						  modificarPrograma(tVectorProgramas,pid,'MATADO');
+     	     			  Fpkill(R,senialAMandar);
+     	     			  writeln('El ha sido MATADO con exito, el mismo es el:',pid);
+					end
+					else
+						writeln('Ha habido un error, codigo: ', cod_error);
+
+	end;			
 
 procedure pipe(comando1:string;opcion1:string;comando2:string;opcion2:string);
 type
@@ -439,19 +507,12 @@ clrscr;
 		end;
 
    else
-	begin		
+	begin
 			pidHijo:=pid;
 			ultimoEjecutadoPID:=IntToStr(pidHijo);
 			UEPID:=IntToStr(pidHijo);
-			
+			standby(UEPID,ruta,1);			
 
-			caracter:=readkey;
-				while readkey <> 'z' do
-					begin
-						caracter:=readkey;
-					end;
-			agregarPrograma(tVectorProgramas,ruta,UEPID,'Detenido');
-			pause(UEPID);
 	end;
  end;
  
