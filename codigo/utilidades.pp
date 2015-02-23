@@ -27,7 +27,7 @@ registroPID = Record
 
  vectorPath=array[1..500] of string;
 
- tVectorPID=Array[1..10] of registroPID;
+ tVectorPID=Array[1..20] of registroPID;
 
 
 
@@ -50,17 +50,31 @@ function proximaPosicionLibre(vector: tVectorPID):byte;
 procedure mostrarVectorProgramas(tVectorProgramas:tVectorPID);
 procedure crearVectorProgramas(var tVectorProgramas:tVectorPID);
 procedure modificarPrograma(var tVectorProgramas:tVectorPID;pid:string;estado:string);
+procedure siExisteEnElVector(pid: string; var valor:boolean);
 
 
 implementation
 uses pash;
+
+procedure siExisteEnElVector(pid: string; var valor:boolean);
+var i:byte;
+begin
+i:=1;
+valor:=false;
+		while (tVectorProgramas[i].pid <> '') do
+			begin
+						if (tVectorProgramas[i].pid = pid) then
+							valor:=true;
+			end;
+end;
+
 
 procedure modificarPrograma(var tVectorProgramas:tVectorPID;pid:string;estado:string); //modifica a un estado nuevo
 var i:byte;
 begin
 
 	i:=1;
-		while (i<>11) do
+		while (i<>21) do
 			begin
 				if ((tVectorProgramas[i].pid) = pid) then
 					begin
@@ -76,12 +90,15 @@ var i:byte;
 
 begin
 	i:=0;
-			for i:=1 to 10 do
+			for i:=1 to 20 do
 				begin
+				 if (tVectorProgramas[i].pid <> '') then
+				  begin
 					Writeln ('Proceso Numero ', i);
 					Writeln ('Nombre: ', tVectorProgramas[i].nombre);
 					Writeln ('PID: ', tVectorProgramas[i].pid);
 					Writeln ('Estado: ', tVectorProgramas[i].estado);
+				  end;
 				end;
 end;
 
@@ -100,7 +117,7 @@ var i:byte;
 
 begin
 i:=0;
-	for i:=1 to 10 do
+	for i:=1 to 20 do
 	 begin
 		tVectorProgramas[i].nombre:= '';
 		tVectorProgramas[i].pid:= '';
