@@ -12,7 +12,7 @@ COPYRIGHT
 
 
 DESCRIPCION
-        Ethu-shell es una interfaz que interpreta comandos desde la entrada estándar, los ejecuta, o advierte en caso de una situación de error. Al ejecutarse en la pantalla aparece el PROMPT que contiene el nombre del equipo.        
+        Ethu-shell es una interfaz que interpreta comandos desde la entrada estándar, los ejecuta, o advierte en caso de una situación de error.    
 
 
 GRAMATICA DEL SHELL
@@ -81,6 +81,167 @@ SEÑALES
        SIGUNUSED    31       Term    Señal no usada.  
 
 
+
+
+
+LS           Comandos de Usuario                     LS
+
+
+NOMBRE
+
+ls   - Lista el Contenido de un directorio
+
+SINOPSIS
+
+ls[OPCION]... [ARCHIVO]...  Ejemplo: 'ls-a', 'ls-f', 'ls-l' [Todo junto sin espacios]
+
+DESCRIPCION
+
+Lista informacion de los archivos de un directorio especifico segun la opcion seleccionada, ademas de pintar con color segun el tipo de archivo:
+   Archivo Normal: color Rojo;
+   Directorio: color verde;
+   Ejecutable: color azul;
+   Enlace: color blanco;
+
+
+Las opciones para este comando son:
+
+   -a, lista el nombre del archivos, incluyendo los archivos ocultos
+
+   -f, clasifica a los archivos segun su tipo.
+           
+                TIPO        NOMBRE+SIMBOLO
+             Directorio     nombre/
+             Ejecutable     nombre*
+             Normal         nombre
+             Enlace         nombre@ 
+
+    
+
+   -l, lista informacion adiccional, ya sea permisos del archivo, tamaño, fecha y hora de modificacion, etc.
+
+
+AUTOR 
+
+Escrito por Julian Acosta, Matias Del Real y Brian Fellin
+
+COPYRIGHT
+     Copyright (c) 2014 , Free Software Foundation .
+     The GNU Lesser General Public License, version 3.0 (LGPL-3.0) <http://opensource.org/licenses/LGPL-3.0>
+
+
+
+
+
+
+KILL          Comandos de Usuario                     KILL
+
+
+NOMBRE
+
+kill   - Envia señales a un proceso o envia la señal predeterminada a uno o dos procesos.
+
+SINOPSIS
+
+kill [SEÑAL O PROCESO]... [PROCESO o NADA]...
+
+DESCRIPCION
+
+Envia una señal que puede ser la predeterminada si no se pone nada en el segundo parametro o si se ponen PID en ambos parametros. Otra manera de trabajar es que se pase la señal en el primer parametro (ya sea el nombre o valor numerico de la señal, ambos comenzando con un '-') y en el segundo parametro una PID.
+    
+
+
+AUTOR 
+
+Escrito por Julian Acosta, Matias Del Real y Brian Fellin
+
+COPYRIGHT
+     Copyright (c) 2014 , Free Software Foundation .
+     The GNU Lesser General Public License, version 3.0 (LGPL-3.0) <http://opensource.org/licenses/LGPL-3.0>
+
+
+
+
+
+
+CD           Comandos de Usuario                     CD
+
+
+NOMBRE
+
+cd  - Permite cambiar de directorio 
+
+SINOPSIS
+
+cd [ruta]
+
+DESCRIPCION
+
+Cuando se invoca a este comando cambiara de directorio de trabajo segun la ruta que se le pase seguido del comando en cuestion, o tambien se puede poner '..' seguido del comando, esto hara que retroceda al directorio antecesor
+
+  
+
+AUTOR 
+
+Escrito por Julian Acosta, Matias Del Real y Brian Fellin
+
+COPYRIGHT
+     Copyright (c) 2014 , Free Software Foundation .
+     The GNU Lesser General Public License, version 3.0 (LGPL-3.0) <http://opensource.org/licenses/LGPL-3.0>
+
+
+
+CAT          Comandos de Usuario                     CAT
+
+
+NOMBRE
+
+cat  - Concatena hasta dos archivos.
+
+SINOPSIS
+
+cat [ARCHIVO] [ARCHIVO].
+
+DESCRIPCION
+
+Concatena uno o dos archivos de un directorio especifico, listandolos uno bajo otro con la salida estandar.
+
+AUTOR 
+
+Escrito por Julian Acosta, Matias Del Real y Brian Fellin
+
+COPYRIGHT
+     Copyright (c) 2014 , Free Software Foundation .
+     The GNU Lesser General Public License, version 3.0 (LGPL-3.0) <http://opensource.org/licenses/LGPL-3.0>
+
+
+
+
+PWD           Comandos de Usuario                     PWD
+
+
+NOMBRE
+
+pwd  - Muestra el directorio actual
+
+SINOPSIS
+
+pwd
+
+DESCRIPCION
+
+Imprime la ruta actual de trabajo 
+
+AUTOR 
+
+Escrito por Julian Acosta, Matias Del Real y Brian Fellin
+
+COPYRIGHT
+     Copyright (c) 2014 , Free Software Foundation .
+     The GNU Lesser General Public License, version 3.0 (LGPL-3.0) <http://opensource.org/licenses/LGPL-3.0>
+
+
+
 PARAMETROS ESPECIALES 
 
          /: sirve para especificar direcciones.
@@ -94,23 +255,3 @@ PARAMETROS ESPECIALES
          |: comando pipe, especifica que el resultado del proceso de un parámetro sera utilizado por el proceso de otro parámetro.
  
  "espacio": sirve para separar parámetros que entran en el Shell.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
