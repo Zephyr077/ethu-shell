@@ -16,6 +16,7 @@ procedure pause(P_id: string);
 procedure fg(P_id: string);
 procedure bg(P_id:string);
 procedure standby(pid:string;ruta:string;vezEjecutado:integer);
+procedure externo(ruta:string; opciones:string);
 procedure matar(P_id: string); //Recibe el PID del proceso, y lo mata
 
 
@@ -489,9 +490,8 @@ pidHijo:integer;
  status:longint;
 caracter:char;
 UEPID:string;
-
-
 begin
+
 pidHijo:=0;
 caracter:='a';
  options:=0;
@@ -515,7 +515,53 @@ clrscr;
 
 	end;
  end;
- 
+
+
+end;
+
+
+
+procedure externo(ruta:string; opciones:string);
+
+var 
+senialAMandar: cint;
+	 cod: word;
+pid:tpid;
+ options: longint;
+pidHijo:integer;
+ status:longint;
+caracter:char;
+UEPID:string;
+aux1:ansiString;
+
+SS: array of ansiString;
+
+begin
+aux1:=opciones;
+setLength(SS,1);
+SS[0]:=aux1;
+ options:=0;
+ status:=0;
+ pid:=fpFork;
+
+
+ case pid of
+  -1:Writeln('Error');
+   0: 	
+		begin
+			if (opciones = '') then			
+			FpExecLP(ruta,[])
+			else
+			FpExecLP(ruta,SS)
+		end;
+
+   else
+	begin
+			fpWaitPid(pid,status,options);	
+	end;
+ end;
+
+
 end;
 
 procedure lsl(ruta:string);
