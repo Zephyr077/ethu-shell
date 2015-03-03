@@ -29,7 +29,6 @@ crearVectorProgramas(tVectorProgramas);
   if verificarRedireccion(cadena)='' then {si dentro de la cadena no existe un simbolo de redireccion sigue el camino siguiente}
   begin
    analizarCadena(cadena,arg1,arg2,arg3,arg4,arg5);{analiza la cadena y devuelve los distintos argumentos, cada argumento esta separado por un espacio}
-
 		begin
 		if (arg1 = 'p') then
 			begin
@@ -160,7 +159,7 @@ begin
                      begin
                       if arg1 <>'' then {pongo esto para que si doy ENTER sin escribir nada no me salte que "no existe el archivo"}
                        if arg1[1]='/' then  
-                        begin               
+                        begin            
                          verificarSiEsExe(arg1,existe,esExe);
                           if (existe=1) and (esExe=1) then 
                             ejecutar(arg1,arg2)
@@ -181,7 +180,7 @@ begin
                            begin
                             buscarEnPath(arg1,rutaAEjecutar);
                             if rutaAEjecutar <>'' then
-                            ejecutar(rutaAEjecutar,arg2)
+                           	 externo(rutaAEjecutar,arg2)
                             else
                              writeln('No se encontro la orden');
                            end;
