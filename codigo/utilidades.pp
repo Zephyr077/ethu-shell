@@ -29,7 +29,7 @@ registroPID = Record
 
  tVectorPID=Array[1..20] of registroPID;
 
-
+ tVectorExterno=Array[0..2] of PChar;
 
 function mes(unNumero:word):string;
 
