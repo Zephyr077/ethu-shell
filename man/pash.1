@@ -12,7 +12,7 @@ COPYRIGHT
 
 
 DESCRIPCION
-        Ethu-shell es una interfaz que interpreta comandos desde la entrada estándar, los ejecuta, o advierte en caso de una situación de error.    
+        Ethu-shell es una interfaz que interpreta comandos desde la entrada estándar, los ejecuta, o advierte en caso de una situación de error. Al mismo se le ha agregado la ejecucion de segundo plano y varias funciones descritas debajo.  
 
 
 GRAMATICA DEL SHELL
@@ -33,11 +33,14 @@ COMANDOS
 
    PWD: Devuelve como resultado la ruta del directorio actual donde se encuentra trabajando el usuario con Pash.
 
-   p: Si no tiene ningun argumento, pausa el ultimo proceso que se mando a ejecutar. Si el argumento es un PID de un proceso, lo pausa.
+
+CARACTERISTICAS AÑADIDAS "Ethu-Shell"
+
+   p: Si no tiene ningun argumento, pausa el ultimo proceso que ha sido ejecutado. Si el argumento es un PID de un proceso, lo pausa.	Ejemplo: 'p 4821'; pausa el proceso con el pid 4821.
 
    bg: Si no tiene ningun argumento, reanuda el ultimo proceso que se mando a ejecutar y deja escribir otros comandos en consola mientras tanto. Si el argumento es un PID de un proceso, reanuda el proceso indicado y deja escribir otros comandos en consola mientras el proceso siga su ejecucion.
 
-  fg: Si no tiene ningun argumento, reanuda el ultimo proceso que se mando a ejecutar y NO deja escribir otros comandos en consola hasta que se oprima la tecla 'z'. Si el argumento es un PID de un proceso, reanuda el proceso indicado y NO deja escribir otros comandos en consola hasta que se oprima la tecla 'z'.
+  fg: Si no tiene ningun argumento, reanuda el ultimo proceso que se mando a ejecutar y NO deja escribir otros comandos en consola hasta que se oprima la combinacion CTRL+Z. En caso de tener argumento, si el mismo es un PID de un proceso, reanuda el proceso indicado y NO deja escribir otros comandos en consola hasta que se oprima la combinacion CTRL+Z.
 
   jobs: Se obtiene la lista de procesos ejecutandose y su estado actual, tanto como su PID correspondiente.
 
@@ -121,10 +124,6 @@ Las opciones para este comando son:
    -l, lista informacion adiccional, ya sea permisos del archivo, tamaño, fecha y hora de modificacion, etc.
 
 
-AUTOR 
-
-Escrito por Julian Acosta, Matias Del Real y Brian Fellin
-
 COPYRIGHT
      Copyright (c) 2014 , Free Software Foundation .
      The GNU Lesser General Public License, version 3.0 (LGPL-3.0) <http://opensource.org/licenses/LGPL-3.0>
@@ -150,11 +149,6 @@ DESCRIPCION
 Envia una señal que puede ser la predeterminada si no se pone nada en el segundo parametro o si se ponen PID en ambos parametros. Otra manera de trabajar es que se pase la señal en el primer parametro (ya sea el nombre o valor numerico de la señal, ambos comenzando con un '-') y en el segundo parametro una PID.
     
 
-
-AUTOR 
-
-Escrito por Julian Acosta, Matias Del Real y Brian Fellin
-
 COPYRIGHT
      Copyright (c) 2014 , Free Software Foundation .
      The GNU Lesser General Public License, version 3.0 (LGPL-3.0) <http://opensource.org/licenses/LGPL-3.0>
@@ -179,11 +173,6 @@ DESCRIPCION
 
 Cuando se invoca a este comando cambiara de directorio de trabajo segun la ruta que se le pase seguido del comando en cuestion, o tambien se puede poner '..' seguido del comando, esto hara que retroceda al directorio antecesor
 
-  
-
-AUTOR 
-
-Escrito por Julian Acosta, Matias Del Real y Brian Fellin
 
 COPYRIGHT
      Copyright (c) 2014 , Free Software Foundation .
@@ -205,10 +194,6 @@ cat [ARCHIVO] [ARCHIVO].
 DESCRIPCION
 
 Concatena uno o dos archivos de un directorio especifico, listandolos uno bajo otro con la salida estandar.
-
-AUTOR 
-
-Escrito por Julian Acosta, Matias Del Real y Brian Fellin
 
 COPYRIGHT
      Copyright (c) 2014 , Free Software Foundation .
@@ -232,10 +217,6 @@ DESCRIPCION
 
 Imprime la ruta actual de trabajo 
 
-AUTOR 
-
-Escrito por Julian Acosta, Matias Del Real y Brian Fellin
-
 COPYRIGHT
      Copyright (c) 2014 , Free Software Foundation .
      The GNU Lesser General Public License, version 3.0 (LGPL-3.0) <http://opensource.org/licenses/LGPL-3.0>
@@ -255,3 +236,10 @@ PARAMETROS ESPECIALES
          |: comando pipe, especifica que el resultado del proceso de un parámetro sera utilizado por el proceso de otro parámetro.
  
  "espacio": sirve para separar parámetros que entran en el Shell.
+ 
+ AUTOR
+ Brian Fellin, Matias Del Real, Julian Ignacio Acosta @ 2014
+ Carrozzo Eduardo, Fiorotto Johann Franco @ 2015
+
+
+
