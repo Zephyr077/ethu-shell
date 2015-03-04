@@ -1,18 +1,23 @@
-Descargar todos los archivos en sus carpetas correspondientes.
-Con una terminal, ir a la carpeta Codigo del proyecto.
+Descargar el proyecto en formato ZIP y descomprimirlo o clonado en un directorio.
+Abrir una terminal, y ubicarse en la carpeta "Codigo" del proyecto.
+Luego, teclear lo siguiente.
 
-{Con permisos de SuperUsuario}
-Teclear en la terminal
+$ sudo su
+{teclear contraseña de equipo}
 
 $ fpcmake
 
 $ make install
 
-Luego, ir a la carpeta man(siempre con la terminal)
-Y luego copiar y pegar lo siguiente:
+Luego, ubicarse con la terminal en la carpeta 'man'.
+Copiar y pegar lo siguiente(sin comillas):
 
 'sudo cp pash.1 /usr/share/man/es/man1/'
+Nota:Man en el programa: 'man pash'
 
-Man en el programa: 'man pash'
 
-Archivos prueba1.pp y prueba2.pp son ejemplos básicos creados con el fin de probar el funcionamiento de primer y segundo plano.
+Para ejecutar el Shell, ubicarse en la carpeta codigo y teclear './principal' sin comillas.
+Empezará su utilización en el directorio /home .
+
+
+Nota: Archivos prueba1.pp y prueba2.pp son ejemplos básicos creados con el fin de probar el funcionamiento de primer y segundo plano.
